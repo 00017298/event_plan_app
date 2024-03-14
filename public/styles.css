@@ -112,7 +112,6 @@ a:hover{
 .delete{
     display: inline-block;
     padding: 5px 12px;
-    margin-left: 100px;
     background: brown;
     color: antiquewhite;
 }
@@ -126,7 +125,7 @@ a:hover{
 .update{
     display: inline-block;
     position: fixed;
-    margin-left: 20px;
+    margin-left: 400px;
     padding: 5px 12px;
     background: rgb(67, 182, 0);
     color: antiquewhite;
