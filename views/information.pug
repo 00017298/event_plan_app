@@ -1,0 +1,9 @@
+extends layout.pug
+
+block content
+    div.container
+        h1.title #{ event.Name }
+        h2.date #{ event.Date }
+        p.location #{ event.Location }
+        p.description #{ event.Description }
+        a.deleteInInfo(href=`/${ event.id }/delete`) Delete
