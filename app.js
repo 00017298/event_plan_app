@@ -64,7 +64,7 @@ app.get('/Events', (req, res)=>{
 
         const Events = JSON.parse(data)
 
-        res.render('Events.pug', {Events : Events})
+        res.render('Events', {Events : Events})
     })
 }) 
 
@@ -108,7 +108,7 @@ app.get('/:id/delete', (req, res) => {
         fs.writeFile('./data/Events.json', JSON.stringify(filteredEvents), (err) => {
             if (err) throw err
 
-            res.render('Events.pug', {Events : filteredEvents, deleted :true})
+            res.render('Events', {Events : filteredEvents, deleted :true})
         })
     })
 })
@@ -132,7 +132,7 @@ app.get('/:id/Update', (req, res) => {
         fs.writeFile('./data/Events.json', JSON.stringify(Events), (err) => {
             if (err) throw err
 
-            res.render('Events.pug', {Events : Events})
+            res.render('Events', {Events : Events})
         })
     })
 })
