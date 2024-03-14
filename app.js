@@ -1,7 +1,7 @@
 const { transcode } = require('buffer')
 const express = require('express')
 const app = express()
-const port = 4000
+const port = 8888
 
 const fs = require('fs')
 
@@ -10,11 +10,11 @@ app.set('view engine', 'pug')
 app.use('/static', express.static('public'))
 app.use(express.urlencoded({extended:false}))
 
-//localhost:4000
+//localhost:8888
 app.listen(port, error => {
     if (error) console.log(error)
 
-    console.log('Server running 4000')
+    console.log('Server running 8888')
 })
 
 app.get('/create', (req, res) => {
