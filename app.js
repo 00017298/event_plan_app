@@ -1,7 +1,7 @@
 const { transcode } = require('buffer')
 const express = require('express')
 const app = express()
-const port = 8888
+const port = 3000
 
 const fs = require('fs')
 
@@ -14,7 +14,7 @@ app.use(express.urlencoded({extended:false}))
 app.listen(port, error => {
     if (error) console.log(error)
 
-    console.log('Server running 8888')
+    console.log('Server running 3000')
 })
 
 app.get('/create', (req, res) => {
@@ -38,9 +38,9 @@ app.post('/create', (req, res) => {
         fs.readFile('./data/Events.json', (err, data)=>{
             if (err) throw err
             
-            const events=JSON.parse(data)
+            const Events=JSON.parse(data)
 
-            events.push({
+            Events.push({
                 id : id (),
                 Name : Name,
                 Date : Date,
@@ -48,7 +48,7 @@ app.post('/create', (req, res) => {
                 Description : Description 
             })
 
-            fs.writeFile('./data/Events.json', JSON.stringify(events), err =>{
+            fs.writeFile('./data/Events.json', JSON.stringify(Events), err =>{
                 if (err) throw err
 
                 res.render('create', {success:true})
@@ -58,24 +58,24 @@ app.post('/create', (req, res) => {
 })
 
 
-app.get('/events', (req, res)=>{
+app.get('/Events', (req, res)=>{
     fs.readFile('./data/Events.json', (err, data)=>{
         if(err) throw err
 
-        const events = JSON.parse(data)
+        const Events = JSON.parse(data)
 
-        res.render('events', {events : events})
+        res.render('Events', {Events : Events})
     })
 }) 
 
-app.get('/events/:id', (req, res) =>{
+app.get('/Events/:id', (req, res) =>{
     const id = req.params.id
 
     fs.readFile('./data/Events.json', (err, data)=>{
         if(err) throw err
 
-        const events = JSON.parse(data)
-        const event = events.filter(event => event.id == id)[0]
+        const Events = JSON.parse(data)
+        const event = Events.filter(event => event.id == id)[0]
         res.render('information', { event : event})
 
     })
@@ -85,10 +85,14 @@ app.get('./data/Events.json', (req, res) => {
     fs.readFile('./data/Events.json', (err, data)=>{
         if(err) throw err
 
-        const events = JSON.parse(data)
-        res.json(events)
+        const Events = JSON.parse(data)
+        res.json(Events)
 
     })
+})
+
+app.get('/', (req, res) => {
+    res.render('home')
 })
 
 //Delete-btn
@@ -98,13 +102,13 @@ app.get('/:id/delete', (req, res) => {
     fs.readFile('./data/Events.json', (err, data) => {
         if (err) throw err
 
-        const events = JSON.parse(data)
-        const filteredEvents = events.filter (event => event.id != id)
+        const Events = JSON.parse(data)
+        const filteredEvents = Events.filter (event => event.id != id)
 
         fs.writeFile('./data/Events.json', JSON.stringify(filteredEvents), (err) => {
             if (err) throw err
 
-            res.render('events', {events : filteredEvents, deleted :true})
+            res.render('Events', {Events : filteredEvents, deleted :true})
         })
     })
 })
@@ -116,19 +120,19 @@ app.get('/:id/Update', (req, res) => {
     fs.readFile('./data/Events.json', (err ,data) => {
         if (err) throw err
 
-        const events = JSON.parse(data)
-        const event = events.filter(event => event.id == id)[0]
+        const Events = JSON.parse(data)
+        const event = Events.filter(event => event.id == id)[0]
 
-        const eventIdx = events.indexOf(event)
-        const spliceevent = events.splice(eventIdx, 1)[0]
+        const eventIdx = Events.indexOf(event)
+        const spliceevent = Events.splice(eventIdx, 1)[0]
 
         spliceevent.done = true
-        events.push(spliceevent)
+        Events.push(spliceevent)
 
-        fs.writeFile('./data/Events.json', JSON.stringify(events), (err) => {
+        fs.writeFile('./data/Events.json', JSON.stringify(Events), (err) => {
             if (err) throw err
 
-            res.render('events', {events : events})
+            res.render('Events', {Events : Events})
         })
     })
 })

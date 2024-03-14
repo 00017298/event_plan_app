@@ -9,6 +9,6 @@ block content
         
         each event in Events
             div.event-wrapper
-                a.event(href=`/events/${event.id}`) #{ event.Name }
+                a.event(href=`/Events/${event.id}`) #{ event.Name }
                 a.update(href=`/${ event.id }/Update`) Update
                 a.delete(href=`/${ event.id }/delete`) Delete
