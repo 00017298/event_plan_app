@@ -1,7 +1,7 @@
 const { transcode } = require('buffer')
 const express = require('express')
 const app = express()
-const port = 8888
+const port = 4000
 
 const fs = require('fs')
 
@@ -10,11 +10,11 @@ app.set('view engine', 'pug')
 app.use('/static', express.static('public'))
 app.use(express.urlencoded({extended:false}))
 
-//localhost:8888
-app.listen(8888, error => {
+//localhost:4000
+app.listen(port, error => {
     if (error) console.log(error)
 
-    console.log('Server running 8888')
+    console.log('Server running 4000')
 })
 
 app.get('/create', (req, res) => {
@@ -85,7 +85,7 @@ app.get('/Events/:id', (req, res) =>{
     })
 })
 
-app.get('/api/v1/Events', (req, res) => {
+app.get('./data/Events.json', (req, res) => {
     fs.readFile('./data/Events.json', (err, data)=>{
         if(err) throw err
 
