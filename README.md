@@ -24,6 +24,10 @@ npm i express express-validator pug body-parser nodemon
 ```bash
 node app.js
 ```
+4. Go to localhost:8888
+[link to localhost:8888](https://locall.host/8888/)
+
+
 
 ### Dependencies
 - express.js
@@ -31,6 +35,10 @@ node app.js
 
 ### Link to GitHub
 [link to github repository](https://github.com/00017298/event_plan_app.git)
+
+
+
+
 
 
 
