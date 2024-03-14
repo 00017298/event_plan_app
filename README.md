@@ -36,7 +36,8 @@ node app.js
 ### Link to GitHub
 [link to github repository](https://github.com/00017298/event_plan_app.git)
 
-
+### Link to Web app
+[Event Planning Application](https://event-plan-app-00017298.onrender.com)
 
 
 
