@@ -62,9 +62,9 @@ app.get('/events', (req, res)=>{
     fs.readFile('./data/Events.json', (err, data)=>{
         if(err) throw err
 
-        const Events = JSON.parse(data)
+        const events = JSON.parse(data)
 
-        res.render('events', {Events : Events})
+        res.render('events', {events : events})
     })
 }) 
 
@@ -85,8 +85,8 @@ app.get('./data/Events.json', (req, res) => {
     fs.readFile('./data/Events.json', (err, data)=>{
         if(err) throw err
 
-        const Events = JSON.parse(data)
-        res.json(Events)
+        const events = JSON.parse(data)
+        res.json(events)
 
     })
 })
@@ -98,13 +98,13 @@ app.get('/:id/delete', (req, res) => {
     fs.readFile('./data/Events.json', (err, data) => {
         if (err) throw err
 
-        const Events = JSON.parse(data)
-        const filteredEvents = Events.filter (event => event.id != id)
+        const events = JSON.parse(data)
+        const filteredEvents = events.filter (event => event.id != id)
 
         fs.writeFile('./data/Events.json', JSON.stringify(filteredEvents), (err) => {
             if (err) throw err
 
-            res.render('events', {Events : filteredEvents, deleted :true})
+            res.render('events', {events : filteredEvents, deleted :true})
         })
     })
 })
