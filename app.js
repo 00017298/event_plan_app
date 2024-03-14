@@ -10,7 +10,7 @@ app.set('view engine', 'pug')
 app.use('/static', express.static('public'))
 app.use(express.urlencoded({extended:false}))
 
-//localhost:8888
+//localhost:3000
 app.listen(port, error => {
     if (error) console.log(error)
 
