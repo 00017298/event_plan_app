@@ -96,7 +96,7 @@ a:hover{
 }
 
 /*All events page style*/
-.medicine-wrapper{
+.event-wrapper{
     max-width: 60%;
     display: flex;
     justify-content: space-between;
@@ -105,7 +105,7 @@ a:hover{
     border-bottom: 1px solid #ccc;
 }
 
-.medicine{
+.event{
     font-size: 1.3rem;
 }
 
