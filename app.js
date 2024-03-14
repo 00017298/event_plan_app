@@ -28,9 +28,11 @@ app.get('/home', (req, res) => {
 //create
 app.post('/create', (req, res) => {
     const Name = req.body.Name
+    const Date = req.body.Date
+    const Location = req.body.Location
     const Description = req.body.Description
 
-    if(Name.trim()==='' && Description.trim()=== ''){
+    if(Name.trim()==='' && Date.trim()=== '' && Location.trim()=== '' && Description.trim()=== ''){
         res.render('create', {error:true})
     }else{
         fs.readFile('./data/Events.json', (err, data)=>{
@@ -41,6 +43,8 @@ app.post('/create', (req, res) => {
             Events.push({
                 id : id (),
                 Name : Name,
+                Date : Date,
+                Location : Location,
                 Description : Description 
             })
 
