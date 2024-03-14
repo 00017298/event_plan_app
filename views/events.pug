@@ -7,7 +7,7 @@ block content
         if deleted
             p.success Deleted
         
-        each event in events
+        each event in Events
             div.event-wrapper
                 a.event(href=`/events/${event.id}`) #{ event.Name }
                 a.update(href=`/${ event.id }/Update`) Update

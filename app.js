@@ -38,9 +38,9 @@ app.post('/create', (req, res) => {
         fs.readFile('./data/Events.json', (err, data)=>{
             if (err) throw err
             
-            const Events=JSON.parse(data)
+            const events=JSON.parse(data)
 
-            Events.push({
+            events.push({
                 id : id (),
                 Name : Name,
                 Date : Date,
@@ -48,7 +48,7 @@ app.post('/create', (req, res) => {
                 Description : Description 
             })
 
-            fs.writeFile('./data/Events.json', JSON.stringify(Events), err =>{
+            fs.writeFile('./data/Events.json', JSON.stringify(events), err =>{
                 if (err) throw err
 
                 res.render('create', {success:true})
@@ -57,12 +57,8 @@ app.post('/create', (req, res) => {
     }
 })
 
-app.get('/', (req, res) => {
-    res.render('home')
-})
 
-
-app.get('/Events', (req, res)=>{
+app.get('/events', (req, res)=>{
     fs.readFile('./data/Events.json', (err, data)=>{
         if(err) throw err
 
@@ -72,14 +68,14 @@ app.get('/Events', (req, res)=>{
     })
 }) 
 
-app.get('/Events/:id', (req, res) =>{
+app.get('/events/:id', (req, res) =>{
     const id = req.params.id
 
     fs.readFile('./data/Events.json', (err, data)=>{
         if(err) throw err
 
-        const Events = JSON.parse(data)
-        const event = Events.filter(event => event.id == id)[0]
+        const events = JSON.parse(data)
+        const event = events.filter(event => event.id == id)[0]
         res.render('information', { event : event})
 
     })
@@ -120,19 +116,19 @@ app.get('/:id/Update', (req, res) => {
     fs.readFile('./data/Events.json', (err ,data) => {
         if (err) throw err
 
-        const Events = JSON.parse(data)
-        const event = Events.filter(event => event.id == id)[0]
+        const events = JSON.parse(data)
+        const event = events.filter(event => event.id == id)[0]
 
-        const eventIdx = Events.indexOf(event)
-        const spliceevent = Events.splice(eventIdx, 1)[0]
+        const eventIdx = events.indexOf(event)
+        const spliceevent = events.splice(eventIdx, 1)[0]
 
         spliceevent.done = true
-        Events.push(spliceevent)
+        events.push(spliceevent)
 
-        fs.writeFile('./data/Events.json', JSON.stringify(Events), (err) => {
+        fs.writeFile('./data/Events.json', JSON.stringify(events), (err) => {
             if (err) throw err
 
-            res.render('events', {Events : Events})
+            res.render('events', {events : events})
         })
     })
 })
