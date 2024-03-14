@@ -24,8 +24,8 @@ npm i express express-validator pug body-parser nodemon
 ```bash
 node app.js
 ```
-4. Go to localhost:8888
-[link to localhost:8888](https://locall.host/8888/)
+4. Go to localhost:3000
+[link to localhost:3000](https://locall.host/3000/)
 
 
 
